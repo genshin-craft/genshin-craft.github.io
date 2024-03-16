@@ -1,4 +1,4 @@
-function craft(possess, target) {
+function craftify(possess, target) {
     function mxm(a) {
       return Math.max(a, 0);
     }
