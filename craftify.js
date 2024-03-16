@@ -15,7 +15,7 @@ function craftify(possess, target) {
         mxm(target[3] - possess[3], 0),
       ]
       );
-    }
+    } else {
       return fusion([
         mxm(possess[0] - target[0], 0),
         mxm(possess[1] - target[1], 0),
@@ -25,6 +25,7 @@ function craftify(possess, target) {
         mxm(target[1] - possess[1], 0),
         mxm(target[2] - possess[2], 0),0
       ]
+                    }
   }
 
   /* ==남은 필요 재화 계산== */
