@@ -4,15 +4,15 @@ function craftify(possess, target) {
     }
     if (possess.length === 4 && target.length === 4) {
       return fusion([
-        mxm(possess[3] - target[3], 0),
-        mxm(possess[2] - target[2], 0),
+        mxm(possess[0] - target[0], 0),
         mxm(possess[1] - target[1], 0),
-        mxm(possess[0] - target[0], 0)
+        mxm(possess[2] - target[2], 0),
+        mxm(possess[3] - target[3], 0)
       ], [
-        mxm(target[3] - possess[3], 0),
-        mxm(target[2] - possess[2], 0),
-        mxm(target[1] - possess[1], 0),
         mxm(target[0] - possess[0], 0),
+        mxm(target[1] - possess[1], 0),
+        mxm(target[2] - possess[2], 0),
+        mxm(target[3] - possess[3], 0),
       ]
       );
     }
