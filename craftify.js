@@ -16,18 +16,15 @@ function craftify(possess, target) {
       ]
       );
     }
-    else if (possess.length === 3 && target.length === 3) {
       return fusion([
-        mxm(possess[2] - target[2], 0),
+        mxm(possess[0] - target[0], 0),
         mxm(possess[1] - target[1], 0),
-        mxm(possess[0] - target[0], 0),0
+        mxm(possess[2] - target[2], 0),0
       ], [
-        mxm(target[2] - possess[2], 0),
+        mxm(target[0] - possess[0], 0),
         mxm(target[1] - possess[1], 0),
-        mxm(target[0] - possess[0], 0),0
+        mxm(target[2] - possess[2], 0),0
       ]
-      );
-    } else return "error! please check body";
   }
 
   /* ==남은 필요 재화 계산== */
