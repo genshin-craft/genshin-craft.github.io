@@ -24,7 +24,7 @@ function craftify(possess, target) {
         mxm(target[0] - possess[0], 0),
         mxm(target[1] - possess[1], 0),
         mxm(target[2] - possess[2], 0),0
-      ]
+      ])
                     }
   }
 
