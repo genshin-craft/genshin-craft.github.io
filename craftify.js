@@ -118,7 +118,6 @@ function craftify(possess, target) {
     if (fT02[1] - flr(fR02[3] / 9) >= 0) fC05[2] = flr(fR02[3] / 9) * 3;
     else fC05[2] = fT02[1] * 3;
     fC05[1] = fC05[2] / 3;
-    console.log(fC05);
     
     /* 2성 보유 */ fR01[3] = remainCalc(fR02[3], fT02[1], 9);
     /* 3성 보유 */ fR01[2] = fR02[2];
