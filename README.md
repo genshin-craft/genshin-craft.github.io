@@ -1,4 +1,4 @@
-See [GUI Example Page](https://genshin-craft.github.io/index.html)
+See GUI Example Page  [Kor](https://genshin-craft.github.io/index.html) / [Eng](https://genshin-craft.github.io/index_en.html)
 
 See post in [Gamedot](https://genshin.gamedot.org/?mid=board&target=view&board=tip&page=1&post=470)
 
