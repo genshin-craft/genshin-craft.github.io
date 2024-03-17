@@ -232,8 +232,7 @@
             rm4.innerText = result.required[1];
             rm3.innerText = result.required[2];
             rm2.innerText = result.required[3];
-            requiredTotal = mxm((result.required[0] * 27 + result.required[1] * 9 + result.required[2] * 3 + result.required[3])
-                          -(result.remain[0] * 27 + result.remain[1] * 9 + result.remain[2] * 3 + result.remain[3]),0)
+            requiredTotal = result.requiredTotal;
 
             if (requiredTotal > 0 ) {
               if(requiredTotal > 100) {
