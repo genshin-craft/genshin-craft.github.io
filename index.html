@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous"
+        />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 돌파 버튼 시작 -->
+        <div class="container my-3 mt-5">
+            <div class="row">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="currentCk" />
+                        <label class="form-check-label" for="flexCheckDefault"> 돌파</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="aimCk" />
+                        <label class="form-check-label" for="flexCheckDefault" checked> 돌파</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 돌파 버튼 끝 -->
+        <!-- 입력창 시작 -->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                            type="number"
+                            id="currentLv"
+                            class="form-control"
+                            id="floatingInput1"
+                            placeholder="현재 레벨"
+                            value=""
+                        />
+                        <label for="floatingInput1"> 현재 레벨</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3 col">
+                        <input
+                            type="number"
+                            id="aimLv"
+                            class="form-control"
+                            id="floatingInput2"
+                            placeholder="목표 레벨"
+                            value="90"
+                        />
+                        <label for="floatingInput2" class="col"> 목표 레벨</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                            id="star_5"
+                            type="number"
+                            class="form-control"
+                            id="floatingInput1"
+                            placeholder="name@example.com"
+                        />
+                        <label for="floatingInput1">5성</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                            id="star_4"
+                            type="number"
+                            class="form-control"
+                            id="floatingInput1"
+                            placeholder="name@example.com"
+                        />
+                        <label for="floatingInput1">4성</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                            id="star_3"
+                            type="number"
+                            class="form-control"
+                            id="floatingInput1"
+                            placeholder="name@example.com"
+                        />
+                        <label for="floatingInput1">3성</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3 col">
+                        <input
+                            id="star_2"
+                            type="number"
+                            class="form-control"
+                            id="floatingInput2"
+                            placeholder="name@example.com"
+                            onkeyup="if(window.event.keyCode==13){render();
+                            this.blur()}"
+                        />
+                        <label for="floatingInput2" class="col">2성</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-2">
+            <button class="btn btn-outline-primary w-100" id="calcBtn">계산하기</button>
+        </div>
+        <!-- 입력창 끝 -->
+        <!-- 결과창 시작 -->
+        <hr />
+        <div class="container my-5" style="border-radius: 5px; display: none">
+            <table class="table table-white">
+                <tr style="text-align: center">
+                    <th width="40%" rowspan="2">전체 필요 재화</th>
+                    <th width="15%" id="total_5" scope="col" style="color: black; background-color: #ffe866"></th>
+                    <th width="15%" id="total_4" scope="col" style="color: black; background-color: #c29cd6"></th>
+                    <th width="15%" id="total_3" scope="col" style="color: black; background-color: #9fb3e6"></th>
+                    <th width="15%" id="total_2" scope="col" style="color: black; background-color: #68d9ac"></th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="container my-5" style="border-radius: 5px">
+            <table class="table table-white">
+                <thead>
+                    <tr style="text-align: center">
+                        <th width="40%">합성</th>
+                        <th width="15%" scope="col" style="color: black">5&lt;-4</th>
+                        <th width="15%" scope="col" style="color: black">4&lt;-3</th>
+                        <th width="15%" scope="col" style="color: black">3&lt;-2</th>
+                    </tr>
+                </thead>
+                <tr style="text-align: center">
+                    <th width="40%">횟수</th>
+                    <th width="15%" id="count_4_5" scope="col" style="color: black"></th>
+                    <th width="15%" id="count_3_4" scope="col" style="color: black"></th>
+                    <th width="15%" id="count_2_3" scope="col" style="color: black"></th>
+                </tr>
+                <tfoot>
+                    <tr style="text-align: center">
+                        <th width="40%" id="moraTotal" scope="col" style="color: black">비용</th>
+                        <th width="15%" id="mora_4_5" scope="col" style="color: black"></th>
+                        <th width="15%" id="mora_3_4" scope="col" style="color: black"></th>
+                        <th width="15%" id="mora_2_3" scope="col" style="color: black"></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="container my-5" style="border-radius: 5px">
+            <table class="table table-white">
+                <tr style="text-align: center">
+                    <th width="40%" rowspan="2">남은 재화</th>
+                    <th width="15%" id="result_5" scope="col" style="color: black; background-color: #ffe866"></th>
+                    <th width="15%" id="result_4" scope="col" style="color: black; background-color: #c29cd6"></th>
+                    <th width="15%" id="result_3" scope="col" style="color: black; background-color: #9fb3e6"></th>
+                    <th width="15%" id="result_2" scope="col" style="color: black; background-color: #68d9ac"></th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="container my-5" style="border-radius: 5px">
+            <table class="table table-white">
+                <tr style="text-align: center">
+                    <th width="40%" rowspan="2">추가 필요 재화</th>
+                    <th width="15%" id="remain_5" scope="col" style="color: black; background-color: #ffe866"></th>
+                    <th width="15%" id="remain_4" scope="col" style="color: black; background-color: #c29cd6"></th>
+                    <th width="15%" id="remain_3" scope="col" style="color: black; background-color: #9fb3e6"></th>
+                    <th width="15%" id="remain_2" scope="col" style="color: black; background-color: #68d9ac"></th>
+                </tr>
+            </table>
+        </div>
+        <!-- 결과창 끝 -->
+    </body>
+
+    <script>
+        // 필드 선언 시작
+        var cc = document.querySelector('#currentCk');
+        var ac = document.querySelector('#aimCk');
+
+        var cl = document.querySelector('#currentLv');
+        var al = document.querySelector('#aimLv');
+
+        var star5 = document.querySelector('#star_5');
+        var star4 = document.querySelector('#star_4');
+        var star3 = document.querySelector('#star_3');
+        var star2 = document.querySelector('#star_2');
+
+        var t5 = document.querySelector('#total_5');
+        var t4 = document.querySelector('#total_4');
+        var t3 = document.querySelector('#total_3');
+        var t2 = document.querySelector('#total_2');
+
+        var r5 = document.querySelector('#result_5');
+        var r4 = document.querySelector('#result_4');
+        var r3 = document.querySelector('#result_3');
+        var r2 = document.querySelector('#result_2');
+
+        var Btn = document.querySelector('#calcBtn');
+        // 필드 선언 끝
+
+        // 계산하기 버튼 클릭
+        var total = [0, 0, 0, 0];
+        var origin = [0, 0, 0, 0];
+
+        function render() {
+            total = totalCalc(al, ac);
+            origin = totalCalc(cl, cc);
+            t5.innerText = total[0] - origin[0];
+            t4.innerText = total[1] - origin[1];
+            t3.innerText = total[2] - origin[2];
+            t2.innerText = total[3] - origin[3];
+            remains();
+        }
+        Btn.addEventListener('click', () => {
+            render();
+        });
+
+        document.getElementById('star_2').addEventListener('enter', function () {
+            render();
+        });
+
+        // 전체 필요 재화 계산
+        function totalCalc(a, c) {
+            if (a.value > 80 || (a.value == 80 && c.checked)) return [6, 9, 9, 1];
+            else if (a.value > 70 || (a.value == 70 && c.checked)) return [0, 9, 9, 1];
+            else if (a.value > 60 || (a.value == 60 && c.checked)) return [0, 3, 9, 1];
+            else if (a.value > 50 || (a.value == 50 && c.checked)) return [0, 0, 9, 1];
+            else if (a.value > 40 || (a.value == 40 && c.checked)) return [0, 0, 3, 1];
+            else if (a.value > 20 || (a.value == 20 && c.checked)) return [0, 0, 0, 1];
+            else return [0, 0, 0, 0];
+        }
+
+        /* ==남은 필요 재화 계산== */
+        // 보유 돌파석 파악
+        function remains() {
+            var remain1 = [
+                Math.max(star5.value - t5.innerText, 0),
+                Math.max(star4.value - t4.innerText, 0),
+                Math.max(star3.value - t3.innerText, 0),
+                Math.max(star2.value - t2.innerText, 0),
+            ];
+            var remain2 = [
+                Math.max(t5.innerText - star5.value, 0),
+                Math.max(t4.innerText - star4.value, 0),
+                Math.max(t3.innerText - star3.value, 0),
+                Math.max(t2.innerText - star2.value, 0),
+            ];
+
+            fusion(remain1, remain2);
+        }
+
+        function fusion(remain1, remain2) {
+            var mora = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+            /* == 1차 합성 시도 == */ // 4 -> 5 합성
+            var fR01 = [0, 0, 0, 0];
+            var fT01 = [0, 0, 0, 0];
+            var fC01 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT01[3] = remain2[3];
+            /* 3성 나머지 */ fT01[2] = remain2[2];
+            /* 4성 나머지 */ fT01[1] = remain2[1];
+            /* 5성 나머지 */ fT01[0] = targetCalc(remain1[1], remain2[0], 3);
+
+            // 4성 -> 5성 합성 횟수
+            if (remain2[0] - flr(remain1[1] / 3) >= 0) fC01[0] = flr(remain1[1] / 3);
+            else fC01[0] = remain2[0];
+
+            /* 2성 보유 */ fR01[3] = remain1[3];
+            /* 3성 보유 */ fR01[2] = remain1[2];
+            /* 4성 보유 */ fR01[1] = remainCalc(remain1[1], remain2[0], 3);
+            /* 5성 보유 */ fR01[0] = remain1[0];
+            // log
+
+            /* == 2차 합성 시도 == */ // 3 -> 4 합성
+            var fR02 = [0, 0, 0, 0];
+            var fT02 = [0, 0, 0, 0];
+            var fC02 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT02[3] = fT01[3];
+            /* 3성 나머지 */ fT02[2] = fT01[2];
+            /* 4성 나머지 */ fT02[1] = targetCalc(fR01[2], fT01[1], 3);
+            /* 5성 나머지 */ fT02[0] = fT01[0];
+
+            // 3성 -> 4성 합성 횟수
+            if (fT01[1] - flr(fR01[2] / 3) >= 0) fC02[1] = flr(fR01[2] / 3);
+            else fC02[1] = fT01[1];
+
+            /* 2성 보유 */ fR02[3] = fR01[3];
+            /* 3성 보유 */ fR02[2] = remainCalc(fR01[2], fT01[1], 3);
+            /* 4성 보유 */ fR02[1] = fR01[1];
+            /* 5성 보유 */ fR02[0] = fR01[0];
+
+            /* == 3차 합성 시도 == */ // 3 -> 5 합성
+            var fC03 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT01[3] = fT02[3];
+            /* 3성 나머지 */ fT01[2] = fT02[2];
+            /* 4성 나머지 */ fT01[1] = fT02[1];
+            /* 5성 나머지 */ fT01[0] = targetCalc(fR02[2], fT02[0], 9);
+
+            // 3성 -> 5성 합성 횟수
+            if (fT02[0] - flr(fR02[2] / 9) >= 0) fC03[1] = flr(fR02[2] / 9) * 3;
+            else fC03[1] = fT02[0] * 3;
+            fC03[0] = fC03[1] / 3;
+
+            /* 2성 보유 */ fR01[3] = fR02[3];
+            /* 3성 보유 */ fR01[2] = remainCalc(fR02[2], fT02[0], 9);
+            /* 4성 보유 */ fR01[1] = fR02[1];
+            /* 5성 보유 */ fR01[0] = fR02[0];
+
+            /* == 4차 합성 시도 == */ // 2 -> 3 합성
+            var fC04 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT02[3] = fT01[3];
+            /* 3성 나머지 */ fT02[2] = targetCalc(fR01[3], fT01[2], 3);
+            /* 4성 나머지 */ fT02[1] = fT01[1];
+            /* 5성 나머지 */ fT02[0] = fT01[0];
+
+            // 2성 -> 3성 합성 횟수
+            if (fT01[2] - flr(fR01[3] / 3) >= 0) fC04[2] = flr(fR01[3] / 3);
+            else fC04[2] = fT01[2];
+
+            /* 2성 보유 */ fR02[3] = remainCalc(fR01[3], fT01[2], 3);
+            /* 3성 보유 */ fR02[2] = fR01[2];
+            /* 4성 보유 */ fR02[1] = fR01[1];
+            /* 5성 보유 */ fR02[0] = fR01[0];
+
+            /* == 5차 합성 시도 == */ // 2 -> 4 합성
+            var fC05 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT01[3] = fT02[3];
+            /* 3성 나머지 */ fT01[2] = fT02[2];
+            /* 4성 나머지 */ fT01[1] = targetCalc(fR02[3], fT02[1], 9);
+            /* 5성 나머지 */ fT01[0] = fT02[0];
+
+            // 3성 -> 5성 합성 횟수
+            if (fT02[1] - flr(fR02[3] / 9) >= 0) fC05[2] = flr(fR02[3] / 9) * 3;
+            else fC05[2] = fT02[1] * 3;
+            fC05[1] = fC05[2] / 3;
+            console.log(fC05);
+
+            /* 2성 보유 */ fR01[3] = remainCalc(fR02[3], fT02[1], 9);
+            /* 3성 보유 */ fR01[2] = fR02[2];
+            /* 4성 보유 */ fR01[1] = fR02[1];
+            /* 5성 보유 */ fR01[0] = fR02[0];
+
+            /* == 6차 합성 시도 == */ // 2 -> 5 합성
+            var fC06 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT02[3] = fT01[3];
+            /* 3성 나머지 */ fT02[2] = fT01[2];
+            /* 4성 나머지 */ fT02[1] = fT01[1];
+            /* 5성 나머지 */ fT02[0] = targetCalc(fR01[3], fT01[0], 27);
+
+            // 3성 -> 5성 합성 횟수
+            if (fT01[0] - flr(fR01[3] / 27) >= 0) fC06[2] = flr(fR01[3] / 27) * 9;
+            else fC06[2] = fT01[0] * 9;
+
+            /* 2성 보유 */ fR02[3] = remainCalc(fR01[3], fT01[0], 27);
+            /* 3성 보유 */ fR02[2] = fR01[2];
+            /* 4성 보유 */ fR02[1] = fR01[1];
+            /* 5성 보유 */ fR02[0] = fR01[0];
+
+            fC06[1] = fC06[2] / 3;
+            fC06[0] = fC06[1] / 3;
+
+            /* == 7차 합성 시도 == */ // 3 + 4 -> 5 합성
+            var fC07 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT01[3] = fT02[3];
+            /* 3성 나머지 */ fT01[2] = fT02[2];
+            /* 4성 나머지 */ fT01[1] = fT02[1];
+            /* 5성 나머지 */
+            if (fT02[0] == 0) fT01[0] = 0;
+            else if (fR02[2] < 9 && fR02[1] < 3 && fR02[1] * 3 + fR02[2] >= 9) fT01[0] = fT02[0] - 1;
+            else fT01[0] = fT02[0];
+
+            // 3성 + 4성 -> 5성 합성 횟수
+            if (fT02[0] - fT01[0] == 1) fC07[1] = 3 - fR02[1];
+            else fC07[1] = 0;
+            if (fT02[0] - fT01[0] == 1) fC07[0] = 1;
+            else fC07[0] = 0;
+
+            /* 2성 보유 */ fR01[3] = fR02[3];
+            /* 3성 보유 */
+            if (fT02[0] - fT01[0] == 1) fR01[2] = fR02[2] - fC07[1] * 3;
+            else fR01[2] = fR02[2];
+            /* 4성 보유 */
+            if (fT02[0] - fT01[0] == 1) fR01[1] = 0;
+            else fR01[1] = fR02[1];
+            /* 5성 보유 */ fR01[0] = fR02[0];
+
+            /* == 8차 합성 시도 == */ // 2 + 3 -> 5 합성
+            var fC08 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT02[3] = fT01[3];
+            /* 3성 나머지 */ fT02[2] = fT01[2];
+            /* 4성 나머지 */ fT02[1] = fT01[1];
+            /* 5성 나머지 */
+            if (fT01[0] == 0) fT02[0] = 0;
+            else if (fR01[3] < 27 && fR01[2] < 9 && fR01[2] * 3 + fR01[3] >= 27) fT02[0] = fT01[0] - 1;
+            else fT02[0] = fT01[0];
+
+            // 2성 + 3성 -> 5성 합성 횟수
+            if (fT01[0] - fT02[0] == 1) fC08[2] = 9 - fR01[2];
+            else fC08[2] = 0;
+            if (fT01[0] - fT02[0] == 1) fC08[0] = 1;
+            else fC08[0] = 0;
+            if (fC08[0] == 1) fC08[1] = 3;
+            else fC08[1] = 0;
+
+            /* 2성 보유 */
+            if (fT01[0] - fT02[0] == 1) fR02[3] = fR01[3] - fC08[2] * 3;
+            else fR02[3] = fR01[3];
+            /* 3성 보유 */
+            if (fT01[0] - fT02[0] == 1) fR02[2] = 0;
+            else fR02[2] = fR01[2];
+            /* 4성 보유 */ fR02[1] = fR01[1];
+            /* 5성 보유 */ fR02[0] = fR01[0];
+
+            /* == 9차 합성 시도 == */ // 2 + 4 -> 5 합성
+            var fC09 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT01[3] = fT02[3];
+            /* 3성 나머지 */ fT01[2] = fT02[2];
+            /* 4성 나머지 */ fT01[1] = fT02[1];
+            /* 5성 나머지 */
+            if (fT02[0] == 0) fT01[0] = 0;
+            else if (fR02[3] < 27 && fR02[1] < 3 && fR02[1] * 9 + fR02[3] >= 27) fT01[0] = fT02[0] - 1;
+            else fT01[0] = fT02[0];
+
+            // 2성 + 4성 -> 5성 합성 횟수
+
+            if (fT02[0] - fT01[0] == 1) fC09[0] = 1;
+            else fC09[0] = 0;
+            if (fT02[0] - fT01[0] == 1) fC09[1] = 3 - fR02[1];
+            else fC09[1] = 0;
+
+            /* 2성 보유 */
+            if (fT02[0] - fT01[0] == 1) fR01[3] = fR02[3] - fC09[1] * 9;
+            else fR01[3] = fR02[3];
+            fC09[2] = (fR02[3] - fR01[3]) / 3;
+            /* 3성 보유 */ fR01[2] = fR02[2];
+            /* 4성 보유 */
+            if (fT02[0] - fT01[0] == 1) fR01[1] = 0;
+            fR01[1] = fR02[1];
+            /* 5성 보유 */ fR01[0] = fR02[0];
+
+            /* == 10차 합성 시도 == */ // 2 + 3 -> 4 합성
+            var fC10 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT02[3] = fT01[3];
+            /* 3성 나머지 */ fT02[2] = fT01[2];
+            /* 4성 나머지 */
+            if (fT01[1] == 0) fT02[1] = 0;
+            else if (fR01[3] < 9 && fR01[2] < 3 && fR01[2] * 3 + fR01[3] >= 9) fT02[1] = fT01[1] - 1;
+            else fT02[1] = fT01[1];
+            /* 5성 나머지 */ fT02[0] = fT01[0];
+
+            // 2성 + 3성 -> 4성 합성 횟수
+            if (fT01[1] - fT02[1] == 1) fC10[2] = 3 - fR01[2];
+            else fC10[2] = 0;
+            if (fT01[1] == 1) fC10[1] = 1;
+            else fC10[1] = 0;
+
+            /* 2성 보유 */
+            if (fT01[1] - fT02[1] == 1) fR02[3] = fR01[3] - fC10[2] * 3;
+            else fR02[3] = fR01[3];
+            /* 3성 보유 */
+            if (fT01[1] - fT02[1] == 1) fR02[2] = 0;
+            else fR02[2] = fR01[2];
+            /* 4성 보유 */ fR02[1] = fR01[1];
+            /* 5성 보유 */ fR02[0] = fR01[0];
+
+            /* == 11차 합성 시도 == */ // 2 + 3 + 4 -> 5 합성
+            var fC11 = [0, 0, 0];
+
+            /* 2성 나머지 */ fT01[3] = fT02[3];
+            /* 3성 나머지 */ fT01[2] = fT02[2];
+            /* 4성 나머지 */ fT01[1] = fT02[1];
+            /* 5성 나머지 */
+            if (fT02[0] == 0) fT01[0] = 0;
+            else if (fR02[3] < 27 && fR02[2] < 9 && fR02[1] < 3 && fR02[1] * 9 + fR02[1] * 3 + fR02[3] >= 27)
+                fT01[0] = fT02[0] - 1;
+            else fT01[0] = fT02[0];
+
+            // 2성 + 3성 + 4성 -> 5성 합성 횟수
+            if (fT02[0] - fT01[0] == 1) {
+                if (fR02[1] == 1) fC11[2] = 6 - fR02[2];
+                else if (fR02[1] == 2) fC11[2] = 3 - fR02[2];
+                else {
+                    console.log('fusion count error!');
+                }
+            } else fC11[2] = 0;
+            if (fT02[0] - fT01[0] == 1) fC11[0] = 1;
+            else fC11[0] = 0;
+            if (fT02[0] - fT01[0] == 1) fC11[1] = 3 - fR02[1];
+            else fC11[1] = 0;
+
+            /* 2성 보유 */
+            if (fT02[0] - fT01[0] == 1) fR01[3] = fR02[3] - fC11[2] * 3;
+            else fR01[3] = fR02[3];
+            /* 3성 보유 */
+            if (fT02[0] - fT01[0] == 1) fR01[2] = 0;
+            else fR01[2] = fR02[2];
+            /* 4성 보유 */
+            if (fT02[0] - fT01[0] == 1) fR01[1] = 0;
+            else fR01[1] = fR02[1];
+            /* 5성 보유 */ fR01[0] = fR02[0];
+
+            r2.innerHTML = fR01[3];
+            r3.innerHTML = fR01[2];
+            r4.innerHTML = fR01[1];
+            r5.innerHTML = fR01[0];
+            document.getElementById('remain_5').innerHTML = fT01[0];
+            document.getElementById('remain_4').innerHTML = fT01[1];
+            document.getElementById('remain_3').innerHTML = fT01[2];
+            document.getElementById('remain_2').innerHTML = fT01[3];
+            var temp3 = [fC01, fC02, fC03, fC04, fC05, fC06, fC07, fC08, fC09, fC10, fC11];
+
+            var four2five = 0;
+            var three2four = 0;
+            var two2three = 0;
+            temp3.forEach((item) => {
+                four2five += item[0];
+                three2four += item[1];
+                two2three += item[2];
+            });
+            document.getElementById('count_4_5').innerHTML = four2five;
+            document.getElementById('count_3_4').innerHTML = three2four;
+            document.getElementById('count_2_3').innerHTML = two2three;
+
+            document.getElementById('mora_4_5').innerHTML = four2five * 2700;
+            document.getElementById('mora_3_4').innerHTML = three2four * 900;
+            document.getElementById('mora_2_3').innerHTML = two2three * 300;
+
+            var totals = two2three * 300 + three2four * 900 + four2five * 2700;
+            document.getElementById('moraTotal').innerHTML = '총 ' + totals + ' 모라';
+            // function
+            function remainCalc(remains, targets, intervals) {
+                if (targets - flr(remains / intervals) >= 0) return remains - flr(remains / intervals) * intervals;
+                else
+                    return (
+                        (flr(remains / intervals) - targets) * intervals +
+                        remains -
+                        flr(remains / intervals) * intervals
+                    );
+            }
+            function targetCalc(remains, targets, intervals) {
+                if (targets - flr(remains / intervals) >= 0) return targets - flr(remains / intervals);
+                else return 0;
+            }
+        }
+
+        function flr(a) {
+            return Math.floor(a);
+        }
+    </script>
+</html>
