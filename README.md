@@ -53,8 +53,16 @@ required : [required arr]
 
 Example
 ```
-const result = craftify ([0, 0, 1,112], [6, 9, 0, 0]);
-console.log(result.count); // 0,9,35
-console.log(result.remain); // 0,0,0,7
-console.log(result.required); // 6,0,0,0
+const result = craftify ([0, 0, 1, 112], [6, 9, 0, 0]);
+console.log(result.count); // 1,12,36
+console.log(result.remain); // 0,0,1,4
+console.log(result.required); // 5,0,0,0
+console.log(result.requiredTotal); // 128
+```
+```
+const result = craftify ([6, 0, 11, 0], [6, 9, 9, 1]);
+console.log(result.count); // 0,0,0
+console.log(result.remain); // 0,0,2,0
+console.log(result.required); // 0,9,0,1
+console.log(result.requiredTotal); // 76
 ```
