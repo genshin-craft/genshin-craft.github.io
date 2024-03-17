@@ -1,7 +1,10 @@
+See post in [Gamedot](https://genshin.gamedot.org/?mid=board&target=view&board=tip&page=1&post=470)
+
 ### Mechanism
 
 First, calculate the items in same class
 Afterwards, each 11 crafting procedure is performed and the final value is returned.
+
 우선 같은 등급에서 재화를 계산합니다.
 이후 총 11번의 합성 절차를 거친 후 값을 리턴합니다.
 |procedure|Before|After|
@@ -22,6 +25,7 @@ Afterwards, each 11 crafting procedure is performed and the final value is retur
 ### Usage
 
 You can download file via this repo, or use script tag like below
+
 파일 직접 받아서 가져와도 되고, script 태그로 가져와 쓰셔도 됩니다.
 ```
 <script src='https://genshin-craft.github.io/craftify.js'></script>
@@ -29,6 +33,7 @@ You can download file via this repo, or use script tag like below
 
 You can use only 1 function. Make sure the arrays are correctly aligned starting from 5star to 2star.
 If the number of item's class is not 4 but 3, you can put 0 value in 5star.
+
 함수는 아래 하나만 쓰시면 됩니다. 배열은 5성에서 2성 순으로 만드시면 됩니다.
 만일 아이템 등급이 총 3개라면 5성 부분에 0을 넣으시면 됩니다.
 ```
@@ -37,6 +42,7 @@ const result = craftify ( 보유중인 아이템 배열,
 ```
 
 return value may like below
+
 리턴값은 아래와 같이 나옵니다
 ```
 count : [5성 업 횟수, 4성 업 횟수, 3성 업 횟수],
