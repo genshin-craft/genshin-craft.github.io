@@ -32,6 +32,7 @@ function craftify(possess, target) {
   // 보유 돌파석 파악
   function fusion(remain1, remain2) {
     /* == 1차 합성 시도 == */ /* 4 -> 5 합성*/
+    var requiredTotal = 0;
     var fR01 = [0, 0, 0, 0];
     var fT01 = [0, 0, 0, 0];
     var fC01 = [0, 0, 0];
@@ -317,9 +318,30 @@ function craftify(possess, target) {
       three2four += item[1];
       two2three += item[2];
     });
+
+    if (fT01[0] !== 0) 
+      {
+        requiredTotal = fT01[0] * 27 + fT01[1] * 9 + fT01[2] * 3 + fT01[3]
+        - (fR01[0] * 27 + fR01[1] * 9 + fR01[2] * 3 + fR01[3])
+      }
+    else if (result.required[1] !== 0) 
+      {
+        requiredTotal = fT01[1] * 9 + fT01[2] * 3 + fT01[3]
+        - (fR01[1] * 9 + fR01[2] * 3 + fR01[3])
+      }
+    else if (result.required[2] !== 0) 
+      {
+        requiredTotal = fT01[2] * 3 + fT01[3]
+        - (fR01[2] * 3 + fR01[3])
+      }
+    else
+      {
+        requiredTotal = mxm(fT01[3] - fR01[3],0);
+      }
     
     return {
       required: [fT01[0], fT01[1], fT01[2], fT01[3]],
+      requiredTotal: requiredTotal,
       remain: [fR01[0], fR01[1], fR01[2], fR01[3]],
       count: [four2five, three2four, two2three]
     };
