@@ -232,9 +232,27 @@
             rm4.innerText = result.required[1];
             rm3.innerText = result.required[2];
             rm2.innerText = result.required[3];
-            requiredTotal = mxm((result.required[0] * 27 + result.required[1] * 9 + result.required[2] * 3 + result.required[3])
-                          -(result.remain[0] * 27 + result.remain[1] * 9 + result.remain[2] * 3 + result.remain[3]),0)
-
+            
+            if (result.required[0] !== 0) 
+              {
+                requiredTotal = result.required[0] * 27 + result.required[1] * 9 + result.required[2] * 3 + result.required[3]
+                - (result.remain[0] * 27 + result.remain[1] * 9 + result.remain[2] * 3 + result.remain[3])
+              }
+            else if (result.required[1] !== 0) 
+              {
+                requiredTotal = result.required[1] * 9 + result.required[2] * 3 + result.required[3]
+                - (result.remain[1] * 9 + result.remain[2] * 3 + result.remain[3])
+              }
+            else if (result.required[2] !== 0) 
+              {
+                requiredTotal = result.required[2] * 3 + result.required[3]
+                - (result.remain[2] * 3 + result.remain[3])
+              }
+            else
+              {
+                requiredTotal = 1;
+              }
+            
             if (requiredTotal > 0 ) {
               if(requiredTotal > 100) {
                 rt.classList.remove("alert-success", "alert-warning");
