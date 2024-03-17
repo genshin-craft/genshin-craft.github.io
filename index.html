@@ -234,8 +234,23 @@
             requiredTotal = mxm((result.required[0] * 27 + result.required[1] * 9 + result.required[2] * 3 + result.required[3])
                           -(result.remain[0] * 27 + result.remain[1] * 9 + result.remain[2] * 3 + result.remain[3]),0)
 
-            if (requiredTotal > 0 ) rt.innerText = `총 ${requiredTotal}개의 가루가 추가로 필요합니다`;
-            else rt.innerText = `재료를 모두 모았습니다!`;
+            if (requiredTotal > 0 ) {
+              if(requiredTotal > 100) {
+                rt.classList.remove("alert-success", "alert-warning");
+                rt.classList.add('alert-danger');
+                rt.innerText = `총 ${requiredTotal}개의 가루가 추가로 필요합니다`;
+                
+              } else {
+                rt.classList.remove("alert-success", "alert-danger");
+                rt.classList.add('alert-warning');
+                rt.innerText = `총 ${requiredTotal}개의 가루가 추가로 필요합니다`;
+              }
+            }
+            else  {
+              rt.classList.remove("alert-warning", "alert-danger");
+              rt.classList.add('alert-success');
+              rt.innerText = `재료를 모두 모았습니다!`;
+            }
             
             c5.innerText = result.count[0];
             c4.innerText = result.count[1];
