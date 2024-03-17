@@ -37,17 +37,16 @@ If the number of item's class is not 4 but 3, you can put 0 value in 5star.
 함수는 아래 하나만 쓰시면 됩니다. 배열은 5성에서 2성 순으로 만드시면 됩니다.
 만일 아이템 등급이 총 3개라면 5성 부분에 0을 넣으시면 됩니다.
 ```
-const result = craftify ( 보유중인 아이템 배열,
-목표 아이템 배열 );
+const result = craftify ( [possess arr], [target arr] );
 ```
 
 return value may like below
 
 리턴값은 아래와 같이 나옵니다
 ```
-count : [5성 업 횟수, 4성 업 횟수, 3성 업 횟수],
-remain : 남은 보유 재화 배열 ,
-required : 추가로 필요한 재화 배열
+count : [5star up, 4star up, 3star up],
+remain : [remained arr] ,
+required : [required arr]
 ```
 
 Example
