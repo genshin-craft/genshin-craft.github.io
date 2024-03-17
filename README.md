@@ -20,7 +20,7 @@ Afterwards, each 11 crafting procedure is performed and the final value is retur
 |5star <-- 3star + 4star|0,2,3,0|1,0,0,0|
 |5star <-- 2star + 3star|0,0,8,3|1,0,0,0|
 |5star <-- 2star + 4star|0,2,0,9|1,0,0,0|
-|4star <-- 2star + 3star|0,0,8,3|0,1,0,0|
+|4star <-- 2star + 3star|0,0,2,3|0,1,0,0|
 |5star <-- 2star + 3star + 4star|0,2,2,3|1,0,0,0|
 
 
