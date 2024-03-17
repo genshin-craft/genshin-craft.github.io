@@ -1,4 +1,5 @@
 See [GUI Example Page](https://genshin-craft.github.io/index.html)
+
 See post in [Gamedot](https://genshin.gamedot.org/?mid=board&target=view&board=tip&page=1&post=470)
 
 ### Mechanism
