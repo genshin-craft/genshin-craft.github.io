@@ -324,12 +324,12 @@ function craftify(possess, target) {
         requiredTotal = fT01[0] * 27 + fT01[1] * 9 + fT01[2] * 3 + fT01[3]
         - (fR01[0] * 27 + fR01[1] * 9 + fR01[2] * 3 + fR01[3])
       }
-    else if (result.required[1] !== 0) 
+    else if (fT01[1] !== 0) 
       {
         requiredTotal = fT01[1] * 9 + fT01[2] * 3 + fT01[3]
         - (fR01[1] * 9 + fR01[2] * 3 + fR01[3])
       }
-    else if (result.required[2] !== 0) 
+    else if (fT01[2] !== 0) 
       {
         requiredTotal = fT01[2] * 3 + fT01[3]
         - (fR01[2] * 3 + fR01[3])
