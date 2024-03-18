@@ -30,7 +30,7 @@ You can download file via this repo, or use script tag like below
 
 파일 직접 받아서 가져와도 되고, script 태그로 가져와 쓰셔도 됩니다.
 ```
-<script src='https://genshin-craft.github.io/craftify.js'></script>
+<script src='https://genshin-craft.github.io/craftify_min.js'></script>
 ```
 
 You can use only 1 function. Make sure the arrays are correctly aligned starting from 5star to 2star.
