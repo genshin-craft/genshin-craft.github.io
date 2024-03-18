@@ -37,6 +37,7 @@
                             type="number"
                             id="currentLv"
                             class="form-control"
+                            onfocus="this.select()" onclick="this.select()" onmouseup="return false;"
                             placeholder="현재 레벨"
                             value=""
                         />
@@ -49,6 +50,7 @@
                             type="number"
                             id="aimLv"
                             class="form-control"
+                            onfocus="this.select()" onclick="this.select()" onmouseup="return false;"
                             placeholder="목표 레벨"
                             value="90"
                         />
@@ -65,6 +67,7 @@
                             id="star_5"
                             type="number"
                             class="form-control"
+                            onfocus="this.select()" onclick="this.select()" onmouseup="return false;"
                         />
                         <label for="floatingInput1">5성</label>
                     </div>
@@ -75,6 +78,7 @@
                             id="star_4"
                             type="number"
                             class="form-control"
+                            onfocus="this.select()" onclick="this.select()" onmouseup="return false;"
                         />
                         <label for="floatingInput1">4성</label>
                     </div>
@@ -85,6 +89,7 @@
                             id="star_3"
                             type="number"
                             class="form-control"
+                            onfocus="this.select()" onclick="this.select()" onmouseup="return false;"
                         />
                         <label for="floatingInput1">3성</label>
                     </div>
@@ -95,7 +100,8 @@
                             id="star_2"
                             type="number"
                             class="form-control"
-                            onkeyup="if(window.event.keyCode==13){render();
+                            onfocus="this.select()" onclick="this.select()" onmouseup="return false;"
+                            onkeydown="if(window.event.keyCode==13){render();
                             this.blur(); $('#exampleModal').modal('show');}"
                         />
                         <label for="floatingInput2" class="col">2성</label>
