@@ -1,10 +1,10 @@
 See GUI Example Page  [Kor](https://genshin-craft.github.io/index.html) / [Eng](https://genshin-craft.github.io/index_en.html)
 
-See post in [Gamedot](https://genshin.gamedot.org/?mid=board&target=view&board=tip&page=1&post=470)
+See Post in [Gamedot](https://genshin.gamedot.org/?mid=board&target=view&board=tip&page=1&post=470)
 
 ### Mechanism
 
-First, calculate the items in same class
+First, calculate the items in the same class
 Afterwards, each 11 crafting procedure is performed and the final value is returned.
 
 우선 같은 등급에서 재화를 계산합니다.
@@ -49,6 +49,7 @@ return value may like below
 count : [5star up, 4star up, 3star up],
 remain : [remained arr] ,
 required : [required arr]
+requiredTotal : required item totals
 ```
 
 Example
